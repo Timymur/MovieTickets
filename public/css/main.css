@@ -1,0 +1,97 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background: #1d1d1d;
+    color: #fff;
+}
+
+header{
+    width: 90%;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #000;
+}
+
+header span{
+    font-size: 25px;
+    font-weight: bold;
+    color: #fcfcfc;
+}
+
+header nav a{
+    color: #fff;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+header nav a:hover{
+    text-decoration: underline;
+}
+
+header input{
+    border: 1 px solid silver;
+    border-radius: 5px;
+    color: black;
+}
+
+header button{
+    padding: 2px;
+    background: #1d1d1d;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #fff;
+}
+
+header button:hover{
+    padding: 2px;
+    background: #fff;
+    border: 1px solid black;
+    border-radius: 3px;
+    color: #1d1d1d;
+}
+
+
+main{
+    width: 90%;
+    padding: 20px 5%;
+    
+    
+}
+.film{
+    margin: 25px;
+    padding: 5px;
+    border: 2px solid black;
+    width: 700px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.film img{
+    margin: 25px;
+    padding: 10px;
+    width: 100px;
+    height: 150px;
+    float: left;
+    border: 3px double black;
+}
+
+.description{
+    margin: 10px;
+
+}
+
+.film a{
+    text-decoration: none;
+    color: silver;
+}
+
+.film a:hover{
+    text-decoration: underline;
+    color: #fcfcfc;
+}
+
