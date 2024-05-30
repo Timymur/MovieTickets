@@ -55,6 +55,12 @@ header button:hover{
     color: #1d1d1d;
 }
 
+.headname{
+    height: 150px;
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+}
 
 main{
     width: 90%;
