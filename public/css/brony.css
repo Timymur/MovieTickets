@@ -99,10 +99,10 @@
     padding: 5px;
     background-color: black;
     display: inline-block;
-    cursor: none;
+    cursor: pointer;
     border-radius: 5px;
     font-size: 15px;
 }
 .buyed:hover{
-  cursor: none;
+  cursor: pointer;
 }

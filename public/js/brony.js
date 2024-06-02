@@ -1,10 +1,11 @@
+let Button = document.querySelector("#buy"); // Вытаскиваем имя кнопки для определения фильма.(Имя кнопки содержит название)
+      let nameButton = Button.name; 
 
-// let ArrayPlace = require('/text/avatar.js');
-// console.log(ArrayPlace);
-var cinemaHall1 = {
+
+var cinemaHall1 = { // Массив с рядами
     row: [5, 7, 9, 9, 9, 9, 9]
   };
-  var cinemaHallMap = '';
+  var cinemaHallMap = '';  // Пока что пустой зал
 
   // перебираем все ряды
   for (var i = 0; i < cinemaHall1.row.length; i++) {
@@ -13,14 +14,16 @@ var cinemaHall1 = {
     var rowNumber = i + 1;
     // сколько мест в этом ряду
     var numberOfSeats = cinemaHall1.row[i];
-    var cinemaHallRow = '';
+    var cinemaHallRow = ''; // Пока что не заполненный ряд
+
     // перебираем места в ряду
     for (var j = 0; j < numberOfSeats; j++) {
       
       // запомнили номер текущего места
       var seatNumber = j + 1;
-      let storageBuy = sessionStorage.getItem(rowNumber+''+seatNumber);
-      console.log(storageBuy);
+      
+      let storageBuy = sessionStorage.getItem(nameButton+rowNumber+''+seatNumber);// storageSession хранит ключи от каждого места в каждом зале. ключ и занчение одинаковые и равны
+                                                                                    // имени фильма ряда и места. например Avatar35
       //Если первое место то перед ним добавляем номер
       if (seatNumber === 1){
         if(storageBuy){ // Если есть storage c определенным индексом, то добавляем buyed
@@ -56,15 +59,17 @@ var cinemaHall1 = {
     cinemaHallMap += cinemaHallRow + '<div class="passageBetween">&nbsp;</div>'; // собираем ряды
   }
   
-  //заполняем в html зал номер 1
+  //заполняем в html зал 
   $('.zal1').html(cinemaHallMap);
  
   
-  // тут по клику определяем что место выкуплено
+  // тут по клику определяем что место выбрано
   $('.seat').on('click', function(e) {
-    if(e.currentTarget.classList.contains('buyed')){
+
+    if(e.currentTarget.classList.contains('buyed')){ // Если место выкуплено , то выдаем сообщение
       alert("Место забронировано");
     }
+
     else{
       result = '';
       // если первый раз кликнули билет выкупили, 
@@ -86,7 +91,8 @@ var cinemaHall1 = {
       el.getAttribute('data-row') + ' Место:' +
       el.getAttribute('data-seat') + '</div>';
     }
-    if (result==''){
+
+    if (result==''){ // Если выбранных мест нет, то прячем кнопку забронировать
       let buttonBuy = document.querySelector('#buy');
       buttonBuy.style.visibility = 'hidden';
     }
@@ -95,18 +101,20 @@ var cinemaHall1 = {
       buttonBuy.style.visibility = 'visible';
     }
     
-    $('.result').html(result);
-    $("#buy").on('click', function(){
-      const buyedTickets = document.querySelectorAll('.buy');
-      for (let buyedTicket of buyedTickets){
-        sessionStorage.setItem(buyedTicket.getAttribute('data-row')+''+buyedTicket.getAttribute('data-seat'), //Запись ключа номер строки и места
-                                buyedTicket.getAttribute('data-row')+''+buyedTicket.getAttribute('data-seat'));//Запись значения номер строки и места
-        buyedTicket.classList.remove('buy');
-        buyedTicket.classList.add('buyed');
-        location.reload();
+    $('.result').html(result); // Показываем выбранные места
+
+    $("#buy").on('click', function(e){ // При нажатии на кнопку забронировать
+      const buyedTickets = document.querySelectorAll('.buy'); // Выбираем все выбранные места
+      for (let buyedTicket of buyedTickets){ // Перебираем их и записываем в storageSession. Ключ и значение одинаковы и равняются имени фильма номеру ряда и места
+        sessionStorage.setItem(nameButton+buyedTicket.getAttribute('data-row')+''+buyedTicket.getAttribute('data-seat'), //Запись ключа имя,  номер строки и места
+                                nameButton+buyedTicket.getAttribute('data-row')+''+buyedTicket.getAttribute('data-seat'));//Запись значения имя, номер строки и места
+        buyedTicket.classList.remove('buy'); // Удаляем класс  buy
+        buyedTicket.classList.add('buyed'); // Добавляем класс buyed
+        location.reload(); // Обновляем страницу
+        
       }
-      remove ="";
-      console.log(result);
+      remove =""; // Очищаем выбранные билеты
+      
     })
   }
 

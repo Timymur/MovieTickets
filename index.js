@@ -1,12 +1,12 @@
 const express = require("express"); // Подключение к фраймворку express js
 
-const app = express();
+const app = express(); // создание приложения через expres js
 
 app.set("view engine", "ejs"); //Установка шаблонизатора
 
-app.use(express.urlencoded({extended: false})); // для корректного получения данных из формы 
+// app.use(express.urlencoded({extended: false})); // для корректного получения данных из формы 
 
-app.use(express.static('public')); // указание папки , в которой хранятся статические файлы. css , js
+app.use(express.static('public')); // указание папки , в которой хранятся статические файлы. css , js, картинки
 
 
 app.get("/", (req, res )=>{ // При переходе на главную страницу запускаем файл index.html
@@ -18,21 +18,12 @@ app.get("/afisha", (req, res )=>{
 }) 
 
 
-app.get("/film/:filmname", (req, res )=>{
-    let fs = require("fs"); // подключение модуля файловой системы
-    let text = fs.readFileSync(__dirname + `/public/text/${req.params.filmname}.txt`, 'utf-8'); // Запись в переменную данных из файла, название которого берем из переданных пользователем данных
-    
+app.get("/film/:filmname", (req, res )=>{ // динамическая страница с названиями фильма
     data = { //Запись всех передаваемых данных
-        filmname: req.params.filmname,
-        text: text,
-        
+        filmname: req.params.filmname, //Вытаскиваем название фильма из url, который приняли из id кнопки 
     };
-    res.render( "film", data); 
+    res.render( "film", data); // Передаем данные на страничку
 })
-
-
-
-
 
 
 app.listen(3000, ()=>{ //Запуск сервера

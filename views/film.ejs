@@ -8,16 +8,17 @@
     <link rel="stylesheet" href="/CSS/brony.css">
 </head>
 <body>
-    <%- include ('blocks/header') -%>
+
+    <%- include ('blocks/header') -%> 
     
 
     <main>
-        <div class="headname"><h1><%= text %></h1></div>
+        <div class="headname"><h1><%= filmname %></h1></div>
     
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         
         <div class='cinemaHall zal1'></div>
-        <div class = "buyButton"><button id="buy">Купить билеты</button></div>
+        <div class = "buyButton"><button name=<%= filmname %> id="buy">Купить билеты</button></div>
         
             
         <div class='result'></div>

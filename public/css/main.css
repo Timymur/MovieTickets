@@ -50,6 +50,11 @@ main{
     
     
 }
+
+.mainPage{
+    text-align: center;
+}
+
 .film{
     margin: 25px;
     padding: 5px;
