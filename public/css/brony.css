@@ -91,3 +91,18 @@
     color: #1d1d1d;
     transform: scale(1.1);
 }
+
+.buyed{
+  height: 30px;
+    width: 30px;
+    margin: 4px;
+    padding: 5px;
+    background-color: black;
+    display: inline-block;
+    cursor: none;
+    border-radius: 5px;
+    font-size: 15px;
+}
+.buyed:hover{
+  cursor: none;
+}
