@@ -44,6 +44,13 @@
         </div>
 
     </main>
-    <script src="/js/sendMovie.js"></script>
+    <script>
+        document.addEventListener("click", (e) => { // Отслеживаем нажатие на кнопку и передаем id  с названием фильма в url
+            if( e.target.id){
+                let id = e.target.id // id  с кнопки, на которую нажали 
+                window.location.href=`/film/${id}`; // Переход на динамическую страницу 
+                }
+        })
+    </script>
 </body>
 </html>

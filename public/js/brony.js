@@ -5,7 +5,7 @@ let Button = document.querySelector("#buy"); // Вытаскиваем имя к
 var cinemaHall1 = { // Массив с рядами
     row: [5, 7, 9, 9, 9, 9, 9]
   };
-  var cinemaHallMap = '';  // Пока что пустой зал
+  var cinemaHallMap = '';  // пустой зал
 
   // перебираем все ряды
   for (var i = 0; i < cinemaHall1.row.length; i++) {
@@ -14,7 +14,7 @@ var cinemaHall1 = { // Массив с рядами
     var rowNumber = i + 1;
     // сколько мест в этом ряду
     var numberOfSeats = cinemaHall1.row[i];
-    var cinemaHallRow = ''; // Пока что не заполненный ряд
+    var cinemaHallRow = ''; // незаполненный ряд
 
     // перебираем места в ряду
     for (var j = 0; j < numberOfSeats; j++) {
@@ -71,22 +71,22 @@ var cinemaHall1 = { // Массив с рядами
     }
 
     else{
-      result = '';
+      
       // если первый раз кликнули билет выкупили, 
       // если повторно значит вернули билет
       $(e.currentTarget).toggleClass('buy');
       //показываем сколько билетов выкуплено
 
-      showBaySeat();
+      showBuySeat();
     }
     
   });
   
-  function showBaySeat() {
+  function showBuySeat() {
     result = '';
     //ищем все места купленные и показываем список выкупленных мест
-    const elements = document.querySelectorAll('.buy');
-    for ( let el of elements){
+    const elements = document.querySelectorAll('.buy'); // Ищем все элементы с классом buy
+    for ( let el of elements){ // Перебирая эти элементы, мы создаем дивы, в которых указано, какие места выбраны
       result += '<div class="ticket">Ряд: ' +
       el.getAttribute('data-row') + ' Место:' +
       el.getAttribute('data-seat') + '</div>';
@@ -103,13 +103,13 @@ var cinemaHall1 = { // Массив с рядами
     
     $('.result').html(result); // Показываем выбранные места
 
-    $("#buy").on('click', function(e){ // При нажатии на кнопку забронировать
-      const buyedTickets = document.querySelectorAll('.buy'); // Выбираем все выбранные места
-      for (let buyedTicket of buyedTickets){ // Перебираем их и записываем в storageSession. Ключ и значение одинаковы и равняются имени фильма номеру ряда и места
+    $("#buy").on('click', function(){ // При нажатии на кнопку забронировать
+       // Выбираем все выбранные места elements 88 строка
+      for (let buyedTicket of elements){ // Перебираем их и записываем в storageSession. Ключ и значение одинаковы и равняются имени фильма номеру ряда и места
         sessionStorage.setItem(nameButton+buyedTicket.getAttribute('data-row')+''+buyedTicket.getAttribute('data-seat'), //Запись ключа имя,  номер строки и места
                                 nameButton+buyedTicket.getAttribute('data-row')+''+buyedTicket.getAttribute('data-seat'));//Запись значения имя, номер строки и места
         buyedTicket.classList.remove('buy'); // Удаляем класс  buy
-        buyedTicket.classList.add('buyed'); // Добавляем класс buyed
+        
         location.reload(); // Обновляем страницу
         
       }

@@ -6,6 +6,7 @@
 body{
     background: #1d1d1d;
     color: #fff;
+    
 }
 
 header{
@@ -34,9 +35,6 @@ header nav a:hover{
 }
 
 
-
-
-
 .headname{
     height: 150px;
     text-align: center;
@@ -53,6 +51,7 @@ main{
 
 .mainPage{
     text-align: center;
+    vertical-align: middle;
 }
 
 .film{
@@ -96,4 +95,6 @@ main{
     color: #1d1d1d;
     transform: scale(1.1);
 }
+
+
 

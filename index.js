@@ -4,7 +4,7 @@ const app = express(); // создание приложения через expre
 
 app.set("view engine", "ejs"); //Установка шаблонизатора
 
-// app.use(express.urlencoded({extended: false})); // для корректного получения данных из формы 
+
 
 app.use(express.static('public')); // указание папки , в которой хранятся статические файлы. css , js, картинки
 
